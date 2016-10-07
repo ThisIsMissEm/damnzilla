@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE window PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        id="dAmnZilla-ChatWin"
+        title="Chat — dAmnZilla"
+        windowtype="dAmnZilla:chat"
+        minwidth="500"
+        minheight="400">
+    
+    <script src="chrome://dAmnZilla/content/dAmnChat.js"/>
+    
+    <popupset>
+        <menupopup id="status-popup" position="before_end">
+            <menuitem label="Disconnect" oncommand="commands.disconnect()"/>
+            <menuseparator/>
+            <menuitem label="Join Chat" oncommand="commands.join()"/>
+            <menuitem label="Part Chat" oncommand="commands.part()"/>
+        </menupopup>
+    </popupset>
+    
+    <!--** THE UI **-->
+    
+    <menubar>
+        <menu label="dAmnZilla">
+            <menupopup>
+                <menuitem label="Join Chat"           oncommand="commands.join()"/>
+                <menuitem label="Part Chat"           oncommand="commands.part()"/>
+                <menuseparator />
+                <menuitem label="Account Details"     oncommand="commands.account()"/>
+                <menuitem label="Preferences"         oncommand="commands.preferences()"/>
+                <menuseparator />
+                <menuitem label="Quit"                oncommand="commands.shutdown()"/>
+            </menupopup>
+        </menu>
+        <menu label="Tools">
+            <menupopup>
+                <menuitem label="Extensions"          oncommand="commands.extensions()"/>
+                <menuitem label="Themes"              oncommand="commands.themes()"/>
+                <menuseparator />
+                <menuitem label="Clear Private Data"  oncommand="commands.clearData()"/>
+                <menuseparator />
+                <menuitem label="DOM Inspector"       oncommand="commands.dominsp()"/>
+                <menuitem label="Javascript Console"  oncommand="commands.jsconsole()"/>
+                <menuitem label="Venkman"             oncommand="commands.venkman()"/>
+            </menupopup>
+        </menu>
+        <menu label="Help">
+            <menupopup>
+                <menuitem label="Help Contents"       oncommand="commands.help()"/>
+                <menuitem label="Release Notes"       oncommand="commands.releaseNotes()"/>
+                <menuitem label="About dAmnZilla"     oncommand="commands.about()"/>
+                <menuseparator />
+                <menuitem label="Donate"              oncommand="commands.donate()"/>
+            </menupopup>
+        </menu>
+    </menubar>
+    <vbox flex="1">
+        <hbox flex="1">
+            <vbox>
+                <html:div id="dAmnZilla-chatTitle"></html:div>
+            </vbox>
+            <vbox flex="1">
+                <html:div id="dAmnZilla-chatLog" flex="1"></html:div>
+            </vbox>
+        </hbox>
+        <splitter orient="horizontal" />
+        <hbox>
+            
+        </hbox>
+    </vbox>
+</window>

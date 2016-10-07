@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE window PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window id="dAmnZilla-ListWin"
+        title="dAmnZilla"
+        persist="width height screenX screenY sizemode"
+        windowtype="dAmnZilla:list"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        width="250" height="760"
+        screenX="-1" screenY="1"
+        minwidth="250" minheight="600">
+    
+    <script src="chrome://damnzilla/content/js/list.js"/>
+    <vbox>
+        <menubar>
+            <menu id="dAmnZilla-menu" label="dAmnZilla">
+                <menupopup>
+                    <menuitem label="Join a Chat..." oncommand="commands.join()"/>
+                    <menuseparator />
+                    <menuitem label="My Account" oncommand="commands.account()"/>
+                    <menuseparator />
+                    <menuitem label="Quit" oncommand="commands.quit()"/>
+                </menupopup>
+            </menu>
+            <menu label="Tools">
+                <menupopup>
+                    <menuitem label="Extensions" oncommand="commands.extensions()"/>
+                    <menuitem label="Themes" oncommand="commands.themes()"/>
+                    <menuseparator />
+                    <menuitem label="Clear Private Data" oncommand="commands.clearPrivateData()"/>
+                    <menuseparator />
+                    <menuitem label="DOM Inspector" oncommand="commands.dominsp()"/>
+                    <menuitem label="Javascript Console" oncommand="commands.jsconsole()"/>
+                    <menuitem label="Venkman" oncommand="commands.venkman()"/>
+                    <menuseparator />
+                    <menuitem label="Preferences" oncommand="commands.preferences()"/>
+                </menupopup>
+            </menu>
+            <menu label="Help">
+                <menupopup>
+                    <menuitem label="Help Contents"       oncommand="commands.help()"/>
+                    <menuitem label="Release Notes"       oncommand="commands.releaseNotes()"/>
+                    <menuitem label="About dAmnZilla"     oncommand="commands.about()"/>
+                    <menuseparator />
+                    <menuitem label="Support dAmnZilla"              oncommand="commands.donate()"/>
+                </menupopup>
+            </menu>
+        </menubar>
+    </vbox>
+    <vbox flex="1">
+        <deck selectedIndex="0" flex="1" id="decker">
+            <hbox align="center" orient="vertical" flex="1" id="login">
+                <spacer flex="1" />
+                <vbox align="left" orient="vertical" width="200">
+                    <label control="username" value="Username"/>
+                    <textbox id="username" value="thims"/>
+                    <label control="password" value="Password"/>
+                    <textbox id="password" type="password" value="G456Th"/>
+                    <hbox align="right">
+                        <button flex="1" label="Login!" id="login_btn" />
+                    </hbox>
+                </vbox>
+                <spacer flex="1" />
+            </hbox>
+            <hbox align="center" orient="vertical" flex="1" id="login">
+                <spacer flex="1" />
+                <vbox align="left" orient="vertical" width="200">
+                    <description id="progresser" style="background:rgba(0,0,0,50); color:#fff; padding:20px; -moz-border-radius:7px;"></description>
+                </vbox>
+                <spacer flex="1" />
+            </hbox>
+            <hbox id="list" flex="1">
+                <listbox id="listbox" flex="1" ondblclick="list.join">
+                    <listitem>Loading... </listitem>
+                </listbox>
+            </hbox>
+        </deck>
+    </vbox>
+    <vbox>
+        <menulist id="status">
+            <menupopup>
+                <menuitem label="Available" selected="true" type="radio"/>
+                <menuitem label="Busy" type="radio"/>
+                <menuitem label="Away" type="radio"/>
+            </menupopup>
+        </menulist>
+    </vbox>
+</window>
